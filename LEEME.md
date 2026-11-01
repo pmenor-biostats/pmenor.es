@@ -17,8 +17,8 @@ Web de una página de pMenor · Estadística clínica en R. Es HTML y CSS estát
 
 ## Antes de publicar
 
-1. **Las páginas legales.** Completa el nombre, el NIF, el domicilio y el plazo de conservación en `aviso-legal.html` y `privacidad.html`, y quita el recuadro de «Borrador».
-2. **La clave del formulario.** Entra en web3forms.com, escribe pmenor.biostats@gmail.com y te llegará una *access key* por correo. En `index.html`, busca `TU_CLAVE_WEB3FORMS` y sustitúyelo por la clave. La clave no es secreta, porque está pensada para ir en la web. Mientras no la pongas, el formulario muestra un aviso de «vista previa» y no envía nada.
+1. **Las páginas legales.** Completa el nombre, el NIF y el domicilio en `aviso-legal.html` y `privacidad.html`, y quita el recuadro de «Borrador».
+2. **La clave del formulario.** Ya está puesta en `index.html` (Web3Forms, asociada a pmenor.biostats@gmail.com).
 
 ## Publicar en GitHub Pages
 
