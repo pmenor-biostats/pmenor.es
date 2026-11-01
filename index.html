@@ -183,6 +183,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--burdeos);outline
 .estado.ok{color:var(--tinta)}
 .estado.error{color:var(--burdeos)}
 .oculto{position:absolute;left:-9999px}
+.solo-lectores{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Pie */
 .pie{background:var(--tinta);color:var(--papel);padding-block:3.5rem 2.5rem}
@@ -618,12 +619,18 @@ label{transition:color .2s}
   var cursor=document.createElement("span"); cursor.className="cursor"; cursor.setAttribute("aria-hidden","true");
   if(lento){ pre.appendChild(cursor); return; }
   // Guarda el contenido final (visible si algo falla) y lo vuelve a escribir línea a línea
+  // El texto original se queda en la página (buscadores y lectores de pantalla);
+  // la animación se escribe en una copia que se cambia por el original al terminar.
   var original=pre.innerHTML;
   var lineas=original.split("\n");
-  pre.innerHTML="";
+  var real=pre;
+  real.classList.add("solo-lectores");
+  pre=document.createElement("pre");
+  pre.setAttribute("aria-hidden","true");
+  real.parentNode.insertBefore(pre, real);
   var i=0;
   function siguiente(){
-    if(i>=lineas.length){ pre.appendChild(cursor); return; }
+    if(i>=lineas.length){ pre.parentNode.removeChild(pre); real.classList.remove("solo-lectores"); real.appendChild(cursor); return; }
     var html=lineas[i++];
     var esComando=html.indexOf('<span class="p">&gt;</span>')===0;
     var linea=document.createElement("span"); linea.className="linea";
