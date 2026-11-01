@@ -7,7 +7,7 @@ Web de una página de pMenor · Estadística clínica en R. Es HTML y CSS estát
 | Archivo | Para qué sirve |
 |---|---|
 | `index.html` | La web |
-| `aviso-legal.html`, `privacidad.html` | **Borradores.** Hay que rellenar lo marcado como `[PENDIENTE]` con la gestoría |
+| `aviso-legal.html`, `privacidad.html` | Aviso legal y política de privacidad (versión sin datos personales) |
 | `404.html` | La página que se muestra si alguien entra en una dirección que no existe |
 | `fonts/` | IBM Plex Sans y Mono alojadas en la propia web, sin Google Fonts, para no enviar la IP de las visitas a Google |
 | `favicon.*`, `icon-*.png`, `apple-touch-icon.png`, `site.webmanifest` | Iconos del kit del logo |
@@ -17,7 +17,7 @@ Web de una página de pMenor · Estadística clínica en R. Es HTML y CSS estát
 
 ## Antes de publicar
 
-1. **Las páginas legales.** Completa el nombre, el NIF y el domicilio en `aviso-legal.html` y `privacidad.html`, y quita el recuadro de «Borrador».
+1. **Las páginas legales.** Publicadas solo con «pMenor» y el correo, para mantener el anonimato. Cuando haya domicilio profesional (o al darte de alta), añadir el nombre, el NIF y el domicilio que pide la LSSI.
 2. **La clave del formulario.** Ya está puesta en `index.html` (Web3Forms, asociada a pmenor.biostats@gmail.com).
 
 ## Publicar en GitHub Pages
