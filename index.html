@@ -299,20 +299,20 @@ label{transition:color .2s}
 @keyframes crecer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes parpadeo{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}}
-section[id],.proyectos{scroll-margin-top:5rem}
-/* Proyectos en GitHub */
-.proyectos{margin-top:clamp(4rem,9vw,6.5rem);display:grid;justify-items:start}
-.proyectos .cabecera-seccion{margin-bottom:clamp(2rem,4vw,2.75rem)}
-.repos{list-style:none;margin:0 0 2rem;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;width:100%}
-.repos li{display:flex;min-width:0}
-.repo{flex:1;display:grid;grid-template-rows:auto auto 1fr auto;gap:.7rem;padding:1.6rem 1.6rem 1.4rem;background:var(--blanco);border:1px solid var(--linea);border-radius:4px;text-decoration:none;transition:border-color .3s,transform .35s var(--suave),box-shadow .35s}
-.repo:hover{border-color:var(--burdeos);transform:translateY(-3px);box-shadow:0 18px 36px -26px rgba(122,30,46,.5)}
-.repo__tipo{font:500 .8rem/1 var(--mono);letter-spacing:.04em;color:var(--burdeos)}
-.repo h3{font-size:1.2rem;line-height:1.25}
-.repo p{color:var(--gris);font-size:.98rem}
-.repo__nombre{font:400 .85rem/1.4 var(--mono);color:var(--tinta);padding-top:.9rem;border-top:1px solid var(--linea);overflow-wrap:anywhere}
-.repo:hover .flecha{transform:translateX(4px)}
-@media (max-width:760px){.repos{grid-template-columns:minmax(0,1fr)}}
+section[id],#codigo{scroll-margin-top:5rem}
+/* Código abierto */
+.abierto{margin-top:clamp(4rem,9vw,6rem);background:var(--tinta);color:var(--papel);border-radius:6px;padding:clamp(1.75rem,4.5vw,3rem);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.75rem,4vw,3.5rem);align-items:center}
+.abierto__texto{display:grid;gap:1.1rem;justify-items:start}
+.abierto .etiqueta{color:var(--gris-claro)}
+.abierto h2{color:#fff}
+.abierto__texto p:not(.etiqueta){color:#d6d1da;font-size:1.08rem;max-width:34rem}
+.abierto__codigo{margin:0;min-width:0;overflow-x:auto;font:400 .92rem/1.75 var(--mono);color:var(--papel);border-left:1px solid #34313c;padding:.25rem 0 .25rem 1.5rem;white-space:pre}
+.abierto__codigo .p,.abierto__codigo .c{color:var(--gris-claro)}
+.abierto__codigo .c{font-style:italic}
+.abierto__codigo .r{color:#fff;font-weight:500}
+.boton--claro{background:transparent;color:#fff;border-color:#fff;margin-top:.4rem}
+.boton--claro:hover{background:#fff;color:var(--tinta);border-color:#fff}
+@media (max-width:860px){.abierto{grid-template-columns:minmax(0,1fr)}.abierto__codigo{border-left:0;border-top:1px solid #34313c;padding:1.25rem 0 0}}
 </style>
 
 <header class="barra">
@@ -323,7 +323,6 @@ section[id],.proyectos{scroll-margin-top:5rem}
       <a href="#servicios">Servicios</a>
       <a href="#como-trabajo">Cómo trabajo</a>
       <a href="#quien-soy">Quién soy</a>
-      <a href="#proyectos">Proyectos</a>
       <a class="boton" href="#contacto">Cuéntame tu proyecto</a>
     </nav>
   </div>
@@ -475,39 +474,22 @@ section[id],.proyectos{scroll-margin-top:5rem}
       </div>
     </div>
 
-    <div class="envoltura proyectos" id="proyectos">
-      <div class="cabecera-seccion revela">
-        <p class="etiqueta">// código abierto</p>
-        <h2 id="titulo-proyectos">Mi trabajo, <span class="clave">a la vista</span>.</h2>
-        <p>El análisis de cuatro artículos publicados, con el código completo en GitHub. Sin datos de pacientes: cada proyecto trae datos simulados con la misma estructura para que puedas ejecutarlo.</p>
+    <div class="envoltura" id="codigo">
+      <div class="abierto revela">
+        <div class="abierto__texto">
+          <p class="etiqueta">// código abierto</p>
+          <h2 id="titulo-codigo">Todo mi código, en abierto.</h2>
+          <p>Publico en GitHub el análisis completo de mis artículos ya publicados: el código en R, las tablas y las figuras. Sin datos de pacientes: cada proyecto trae datos simulados con la misma estructura para que puedas ejecutarlo de principio a fin.</p>
+          <a class="boton boton--claro" href="https://github.com/pmenor-biostats">Ver el código en GitHub <span class="flecha" aria-hidden="true">→</span></a>
+        </div>
+<pre class="abierto__codigo" aria-label="Ejemplo: cómo se reproduce un análisis de pMenor"><span class="c"># Cualquier proyecto se reproduce así</span>
+<span class="p">&gt;</span> source("R/simular_datos.R")
+<span class="p">&gt;</span> rmarkdown::render("analisis.Rmd")
+<span class="r">Output created: analisis.html</span>
+
+<span class="c"># 0 pacientes reales.</span>
+<span class="c"># Los mismos métodos que el artículo.</span></pre>
       </div>
-      <ul class="repos revela">
-        <li><a class="repo" href="https://github.com/pmenor-biostats/antidsdna-clia-vs-ria">
-          <span class="repo__tipo">comparación de métodos</span>
-          <h3>Dos inmunoensayos, dos tercios de valores censurados</h3>
-          <p>CLIA frente a RIA para anti-dsDNA en 807 muestras. Cuando Passing-Bablok no sirve: regresión Tobit, Bland-Altman, kappa frente a PABAK y curva ROC.</p>
-          <span class="repo__nombre">antidsdna-clia-vs-ria <span class="flecha" aria-hidden="true">→</span></span>
-        </a></li>
-        <li><a class="repo" href="https://github.com/pmenor-biostats/snfl-rcv-multiple-sclerosis">
-          <span class="repo__tipo">biomarcador longitudinal</span>
-          <h3>¿Comparar al paciente con la población o consigo mismo?</h3>
-          <p>967 determinaciones de neurofilamentos en 295 pacientes con esclerosis múltiple. Modelo lineal mixto, valor de referencia del cambio y curvas ROC con DeLong.</p>
-          <span class="repo__nombre">snfl-rcv-multiple-sclerosis <span class="flecha" aria-hidden="true">→</span></span>
-        </a></li>
-        <li><a class="repo" href="https://github.com/pmenor-biostats/der-p-molecular-sensitization">
-          <span class="repo__tipo">diagnóstico molecular</span>
-          <h3>Perfiles de sensibilización al ácaro del polvo</h3>
-          <p>1.685 pacientes y 9 componentes alergénicos. Prevalencias con su precisión, cambios con la edad, gráfico UpSet, componentes principales y k-means.</p>
-          <span class="repo__nombre">der-p-molecular-sensitization <span class="flecha" aria-hidden="true">→</span></span>
-        </a></li>
-        <li><a class="repo" href="https://github.com/pmenor-biostats/cannabis-ltp-cross-sensitization">
-          <span class="repo__tipo">asociación entre variables</span>
-          <h3>Cannabis y proteínas de transferencia de lípidos</h3>
-          <p>2.409 pacientes y 13 comparaciones. Test exacto de Fisher con corrección de Bonferroni, odds ratio, correlaciones y perfiles de pacientes.</p>
-          <span class="repo__nombre">cannabis-ltp-cross-sensitization <span class="flecha" aria-hidden="true">→</span></span>
-        </a></li>
-      </ul>
-      <a class="boton boton--fantasma" href="https://github.com/pmenor-biostats">Ver todo en GitHub <span class="flecha" aria-hidden="true">→</span></a>
     </div>
   </section>
 
