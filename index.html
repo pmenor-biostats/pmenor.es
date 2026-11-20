@@ -299,6 +299,20 @@ label{transition:color .2s}
 @keyframes crecer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes parpadeo{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important}}
+section[id],.proyectos{scroll-margin-top:5rem}
+/* Proyectos en GitHub */
+.proyectos{margin-top:clamp(4rem,9vw,6.5rem);display:grid;justify-items:start}
+.proyectos .cabecera-seccion{margin-bottom:clamp(2rem,4vw,2.75rem)}
+.repos{list-style:none;margin:0 0 2rem;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;width:100%}
+.repos li{display:flex;min-width:0}
+.repo{flex:1;display:grid;grid-template-rows:auto auto 1fr auto;gap:.7rem;padding:1.6rem 1.6rem 1.4rem;background:var(--blanco);border:1px solid var(--linea);border-radius:4px;text-decoration:none;transition:border-color .3s,transform .35s var(--suave),box-shadow .35s}
+.repo:hover{border-color:var(--burdeos);transform:translateY(-3px);box-shadow:0 18px 36px -26px rgba(122,30,46,.5)}
+.repo__tipo{font:500 .8rem/1 var(--mono);letter-spacing:.04em;color:var(--burdeos)}
+.repo h3{font-size:1.2rem;line-height:1.25}
+.repo p{color:var(--gris);font-size:.98rem}
+.repo__nombre{font:400 .85rem/1.4 var(--mono);color:var(--tinta);padding-top:.9rem;border-top:1px solid var(--linea);overflow-wrap:anywhere}
+.repo:hover .flecha{transform:translateX(4px)}
+@media (max-width:760px){.repos{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 <header class="barra">
@@ -309,6 +323,7 @@ label{transition:color .2s}
       <a href="#servicios">Servicios</a>
       <a href="#como-trabajo">Cómo trabajo</a>
       <a href="#quien-soy">Quién soy</a>
+      <a href="#proyectos">Proyectos</a>
       <a class="boton" href="#contacto">Cuéntame tu proyecto</a>
     </nav>
   </div>
@@ -458,6 +473,41 @@ label{transition:color .2s}
           <li><span>04</span>Análisis en R, reproducibles de principio a fin</li>
         </ul>
       </div>
+    </div>
+
+    <div class="envoltura proyectos" id="proyectos">
+      <div class="cabecera-seccion revela">
+        <p class="etiqueta">// código abierto</p>
+        <h2 id="titulo-proyectos">Mi trabajo, <span class="clave">a la vista</span>.</h2>
+        <p>El análisis de cuatro artículos publicados, con el código completo en GitHub. Sin datos de pacientes: cada proyecto trae datos simulados con la misma estructura para que puedas ejecutarlo.</p>
+      </div>
+      <ul class="repos revela">
+        <li><a class="repo" href="https://github.com/pmenor-biostats/antidsdna-clia-vs-ria">
+          <span class="repo__tipo">comparación de métodos</span>
+          <h3>Dos inmunoensayos, dos tercios de valores censurados</h3>
+          <p>CLIA frente a RIA para anti-dsDNA en 807 muestras. Cuando Passing-Bablok no sirve: regresión Tobit, Bland-Altman, kappa frente a PABAK y curva ROC.</p>
+          <span class="repo__nombre">antidsdna-clia-vs-ria <span class="flecha" aria-hidden="true">→</span></span>
+        </a></li>
+        <li><a class="repo" href="https://github.com/pmenor-biostats/snfl-rcv-multiple-sclerosis">
+          <span class="repo__tipo">biomarcador longitudinal</span>
+          <h3>¿Comparar al paciente con la población o consigo mismo?</h3>
+          <p>967 determinaciones de neurofilamentos en 295 pacientes con esclerosis múltiple. Modelo lineal mixto, valor de referencia del cambio y curvas ROC con DeLong.</p>
+          <span class="repo__nombre">snfl-rcv-multiple-sclerosis <span class="flecha" aria-hidden="true">→</span></span>
+        </a></li>
+        <li><a class="repo" href="https://github.com/pmenor-biostats/der-p-molecular-sensitization">
+          <span class="repo__tipo">diagnóstico molecular</span>
+          <h3>Perfiles de sensibilización al ácaro del polvo</h3>
+          <p>1.685 pacientes y 9 componentes alergénicos. Prevalencias con su precisión, cambios con la edad, gráfico UpSet, componentes principales y k-means.</p>
+          <span class="repo__nombre">der-p-molecular-sensitization <span class="flecha" aria-hidden="true">→</span></span>
+        </a></li>
+        <li><a class="repo" href="https://github.com/pmenor-biostats/cannabis-ltp-cross-sensitization">
+          <span class="repo__tipo">asociación entre variables</span>
+          <h3>Cannabis y proteínas de transferencia de lípidos</h3>
+          <p>2.409 pacientes y 13 comparaciones. Test exacto de Fisher con corrección de Bonferroni, odds ratio, correlaciones y perfiles de pacientes.</p>
+          <span class="repo__nombre">cannabis-ltp-cross-sensitization <span class="flecha" aria-hidden="true">→</span></span>
+        </a></li>
+      </ul>
+      <a class="boton boton--fantasma" href="https://github.com/pmenor-biostats">Ver todo en GitHub <span class="flecha" aria-hidden="true">→</span></a>
     </div>
   </section>
 
